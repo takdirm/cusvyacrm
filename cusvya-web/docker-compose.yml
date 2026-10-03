@@ -1,0 +1,20 @@
+services:
+  webadmin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: takdirm/scootradmin:latest
+    container_name: webadmin
+    ports:
+      - '8080:8080'
+    volumes:
+      # Use the same backend config path for consistency
+      - /opt/projects/scootr/conf/config.json:/usr/share/nginx/html/config.json:ro
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    dns_search:
+      - .
+    restart: unless-stopped
+    command: /bin/sh -c "sed -i 's/listen 80;/listen 8080;/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    network_mode: host

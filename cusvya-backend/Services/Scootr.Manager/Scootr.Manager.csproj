@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+	<TargetFramework>net8.0</TargetFramework>
+
+	<Nullable>enable</Nullable>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<UserSecretsId>41b447ea-458d-4bb5-be68-244d1ab74c5d</UserSecretsId>
+	<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	<DockerfileContext>..\..</DockerfileContext>
+	  <ApplicationIcon>applogo-main.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+
+    <Content Include="..\..\conf\appsettings.json" Link="conf\appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="applogo-main.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="10.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="10.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="9.0.10" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="8.0.0" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="conf\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Scootr.Service\Scootr.Manager.Service.csproj" />
+  </ItemGroup>
+
+</Project>

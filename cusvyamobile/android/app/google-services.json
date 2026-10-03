@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "379031999692",
+    "project_id": "cusvya",
+    "storage_bucket": "cusvya.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379031999692:android:3cd6466bc3821e8c185e69",
+        "android_client_info": {
+          "package_name": "com.cusvya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr_9YF6IP8Eduf6puhv5us9zyaX-puemI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

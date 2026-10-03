@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "wellness-home-services",
+  "private_key_id": "62c308ea88755777ed885800a3ad2b72ee4aec75",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDIm9ma0AnBojvk\n65QPvjf3nLM8HulQggH+4lMJ5XbkWbMyIc9kEa3/JVa/rLDWI7zUoQBQS65OYUqa\nKrxdDTAI/ztkIHt+shGGWq0Hwf04/Z0LZm2aZHiZ6t7FuzjEwIy9zP/rs4WBOlJ+\nbcsWaYjhW0mAbYdc9IayWedJbNjsIanzsFQRf0GCBMp+2QJyrt5CckHWogEs+xXu\nmggAE19VqUOFPhPK1wVkeq9iPpaZ4WOoTrdsIheHVGl5UgivnPaiu/VSaX4Jhyxf\nWDkh0gKw9Y7KjaZbKkuHfbA8LewnCSuLDJBl6EOxLAieU8EUp2WP61LeED49gDHH\nMIMgqiSLAgMBAAECggEAE6z0L6gg6izQerg/r42aF/9MCw+twDeIHOjeI8stmTb9\nCY6MX0W7+ZmUGRJFzohMddRhX1QU7AYZ1uYYec3t0gFqi1GuRckO8/etHzoqbRkJ\neqaYsGW9+GazY9RkPH6gLzYjPF8WrzaPrxZzWVGPhdQ6G3kNUj4qKeWsds9QtVQT\n+bC1PgkEhHI8mbLWmdGiOn5bdF0AG0sZi+91VqRJPfQML68h7EqAf4/GNdY9Tbs+\naVkOm72vE57mzqmbkUMNHtYzZV+Pw01c2d+uj1r3yTa4lTT6g3P0njQ7OKXkihUq\nUgIhFZA8+lwDAPX5XxudBZfojUzQjRI8bivaN8FuTQKBgQD3EEX7MMj6oY+0fcKi\nYUNrCgGzI2uls2axBI5gcojdQ5iJ6pa68fACVz877ZP7AScnIhwwppbXFaJe1V2r\nJpqQwVmSWF9AZNugtwTLmWO+K1jPJJ7qwSIq36cw44/a0OejBAlP6M3WtMLqRABf\naK/LIG6mjuswGK8DuJZZv4hB5QKBgQDP3Wu7A7xoeN1IxdB17u8EGUB7Xl6pygxR\nrS7v0ItvdI1WZk1NEXdQEv1X8240ckQk77ulLJc9f4J1QsfSvncpWtLGdFfYMlDT\nx/QlF9iNmMuWHksWybE/zOp+VCiw0TNuxAydOW5pgrGWwBWEbIsrbhNwMhHic6SP\ngO1RWRMlrwKBgB0l+lusYcnQDdhJjhECUKXsRE8SOr0N8WupEfMnECaqtvBukOH1\ncU+VY4x6dx8B/9CKIbFLtjgiAUoW+jobD9lMNnkhm/tI6vCHJzWuHypsisnFlEo2\nBwXv5RXLg0lZpDqDW2XmHYLbSLPC2hhnjXX1mZhk/DJsdxmFSZfFFRpRAoGBAKZi\nm7hP7kFF9gMpbIrqHeKPAAGAcY/BTokWckq+CM7HYdc1/kxhXbr36Fi9X4qVqJxU\nVUSK4+jzJw8LzH2RvjqZG7yFJkfFRtOu62vBobL+CoB4cSyld78VHOLQJN4cJupT\n/bDgZtQILHT5/n9Ij0HNU7vsKEq2vJOt5MjH3z67AoGAA6l9IB/1+THKDXYkASQ7\n6+BHb3HI3ZN319sRU6JZrbj8++bwM+utzUdCoUmUndBsCRnj0Vfleq3dXM0pfp5U\nVOQoF5rjpYBxE/xDozL/OiLLbMUEGlTsJ+X0XtAHaIBJEuBNK4AaGZougnWyvUs5\nZownkjZuKU7HrkhyZqcgWK0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@wellness-home-services.iam.gserviceaccount.com",
+  "client_id": "106691603987274653967",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40wellness-home-services.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

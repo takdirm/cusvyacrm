@@ -1,0 +1,1940 @@
+GPS Tracker
+Communication Protocol
+
+-1-
+GPSTrackerCommunicationProtocol
+CONTENT
+I. COMMUNICATION PROTOCOL .................................................................................................5
+II. TERMS, DEFINITIONS ............................................................................................................... 5
+III. BASIC RULES ............................................................................................................................ 6
+IV. DATA PACKET FORMAT .............................................................................................................8
+4.1.START BIT .................................................................................................................................... 8
+4.2.PACKET LENGTH ............................................................................................................................ 8
+4.3.PROTOCOL NUMBER ...................................................................................................................... 8
+4.4.INFORMATION CONTENTS ............................................................................................................... 8
+4.5.INFORMATION SERIAL NUMBER .......................................................................................................8
+4.6.ERROR CHECK ...............................................................................................................................8
+4.7.STOP BIT ......................................................................................................................................9
+v. Details about Data Packet sent by Server to Terminal ....................................................... 10
+5.1.LOGIN MESSAGE PACKET ..............................................................................................................10
+5.1.1. Terminal Sending Data Packet to Server .................................................................... 10
+5.1.1.1. Start Bit .............................................................................................................................10
+5.1.1.2. Packet Length .................................................................................................................... 10
+5.1.1.3. Protocol Number ...............................................................................................................10
+5.1.1.4. Terminal ID ........................................................................................................................10
+5.1.1.5. Information Serial Number ................................................................................................10
+5.1.1.6. Error Check ........................................................................................................................10
+5.1.1.7. Stop Bit ............................................................................................................................. 10
+5.1.2. Server Responds the Data Packet .............................................................................. 10
+5.1.2.1. Start Bit .............................................................................................................................11
+5.1.2.2. Packet Length .................................................................................................................... 11
+5.1.2.3. Protocol Number ...............................................................................................................11
+5.1.2.4. Information Serial Number ................................................................................................11
+5.1.2.5. Error Check ........................................................................................................................11
+5.1.2.6. Stop Bit ............................................................................................................................. 11
+5.1.3. Examples ...........................................................................................................................11
+5.2.LOCATION DATA PACKET (COMBINED INFORMATION PACKAGE OF GPS AND LBS) ................................. 12
+5.2.1. Terminal Sending Location Data Packet to Server ......................................................12
+5.2.1.1. Start Bit .............................................................................................................................12
+5.2.1.2. Packet Length .................................................................................................................... 12
+5.2.1.3. Protocol Number ...............................................................................................................12
+5.2.1.4. Date Time ..........................................................................................................................12
+5.2.1.5. Length of GPS information, quantity of positioning satellites .............................................13
+5.2.1.6. Latitude .............................................................................................................................13
+5.2.1.7. Longitude .......................................................................................................................... 13
+5.2.1.8. Speed ................................................................................................................................ 13
+
+-2-
+GPSTrackerCommunicationProtocol
+5.2.1.9. Course Status .................................................................................................................... 14
+5.2.1.10. MCC .................................................................................................................................. 15
+5.2.1.11. MNC ..................................................................................................................................15
+5.2.1.12. LAC ....................................................................................................................................15
+5.2.1.13. Cell ID ................................................................................................................................15
+5.2.1.14. Information Serial Number ................................................................................................15
+5.2.1.15. Error Check ........................................................................................................................15
+5.2.1.16. Stop Bit ............................................................................................................................. 15
+5.2.2. Examples of Packet Sent from Terminal to Server ..................................................... 15
+5.3.ALARM PACKET (GPS, LBS, COMBINED STATUS INFORMATION PACKET) .............................................. 16
+5.3.1. Server Sending Alarm Data Packet to Server ............................................................. 16
+5.3.1.1. Start Bit .............................................................................................................................16
+5.3.1.2. Packet Length .................................................................................................................... 16
+5.3.1.3. Protocol Number ...............................................................................................................16
+5.3.1.4. Date Time ..........................................................................................................................16
+5.3.1.5. Length of GPS information, quantity of positioning satellites .............................................16
+5.3.1.6. Latitude .............................................................................................................................16
+5.3.1.7. Longitude .......................................................................................................................... 16
+5.3.1.8. Speed ................................................................................................................................ 16
+5.3.1.9. Status and Course ..............................................................................................................17
+5.3.1.10. MCC .................................................................................................................................. 17
+5.3.1.11. MNC ..................................................................................................................................17
+5.3.1.12. LAC ....................................................................................................................................17
+5.3.1.13. Cell ID ................................................................................................................................17
+5.3.1.14. Terminal Information .........................................................................................................17
+5.3.1.15. Voltage Level ..................................................................................................................... 17
+5.3.1.16. GSM Signal Strength Levels ............................................................................................... 17
+5.3.1.17. Alarm/Language ................................................................................................................18
+5.3.1.18. Information Serial Number ................................................................................................18
+5.3.1.19. Error Check ........................................................................................................................18
+5.3.1.20. Stop Bit ............................................................................................................................. 18
+5.3.2. Examples ...........................................................................................................................18
+5.4.HEARTBEAT PACKET (STATUS INFORMATION PACKET) ......................................................................... 20
+5.4.1. Terminal Sending Heartbeat Packet to Server ........................................................... 20
+5.4.1.1. Start Bit .............................................................................................................................20
+5.4.1.2. Packet Length .................................................................................................................... 20
+5.4.1.3. Protocol Number ...............................................................................................................20
+5.4.1.4. Terminal Information .........................................................................................................20
+5.4.1.5. Voltage Level ..................................................................................................................... 21
+5.4.1.6. GSM Signal Strength Levels ............................................................................................... 21
+5.4.1.7. Alarm/Language ................................................................................................................21
+5.4.1.8. Information Serial Number ................................................................................................21
+5.4.1.9. Error Check ........................................................................................................................21
+5.4.1.10. Stop Bit ............................................................................................................................. 21
+
+-3-
+GPSTrackerCommunicationProtocol
+5.4.2. Server Responds the Data Packet .............................................................................. 21
+5.4.2.1. Start Bit .............................................................................................................................22
+5.4.2.2. Packet Length .................................................................................................................... 22
+5.4.2.3. Protocol Number ...............................................................................................................22
+5.4.2.4. Information Serial Number ................................................................................................22
+5.4.2.5. Error Check ........................................................................................................................22
+5.4.2.6. Stop Bit ............................................................................................................................. 22
+5.4.3. Examples ................................................................................................................... 22
+VI. DATA PACKET SENT FROM SERVER TO TERMINAL ..................................................................23
+6.1.PACKET SENT BY SERVER .............................................................................................................. 23
+6.1.1. Start Bit .............................................................................................................................23
+6.1.2. Packet Length .................................................................................................................... 23
+6.1.3. Protocol Number ...............................................................................................................23
+6.1.4. Length of Command .......................................................................................................... 23
+6.1.5. Server Flag Bit ................................................................................................................... 23
+6.1.6. Command Content ............................................................................................................ 23
+6.1.7. Language ...........................................................................................................................23
+6.1.8. Information Serial Number ................................................................................................23
+6.1.9. Error Check ........................................................................................................................24
+6.1.10. Stop Bit ............................................................................................................................. 24
+6.2.PACKET REPLIED BY TERMINAL ...................................................................................................... 24
+6.2.1. Start Bit .............................................................................................................................24
+6.2.2. Packet Length .................................................................................................................... 24
+6.2.3. Protocol Number ...............................................................................................................24
+6.2.4. Length of Command .......................................................................................................... 24
+6.2.5. Server Flag Bit ................................................................................................................... 24
+6.2.6. Command Content ............................................................................................................ 24
+6.2.7. Language ...........................................................................................................................25
+6.2.8. Information Serial Number ................................................................................................25
+6.2.9. Error Check ........................................................................................................................25
+6.2.10. Stop Bit ............................................................................................................................. 25
+6.3. Looking Up Location Information .......................................................................................26
+6.4. Cutting Oil and Electricity .................................................................................................. 26
+6.5. Connecting Oil and Electricity ............................................................................................ 26
+6.6. Address Querying Information Sent by the Server ............................................................. 26
+6.7.GPS, Phone Number Querying Address Information Package (0X1A) ................................28
+6.7.1. Information from Terminal to Server ................................................................................. 28
+6.7.1.1. Start Bit .............................................................................................................................28
+6.7.1.2. Packet Length .................................................................................................................... 28
+6.7.1.3. Protocol Number ...............................................................................................................28
+6.7.1.4. Date Time ..........................................................................................................................28
+6.7.1.5. Length of GPS information, quantity of positioning satellites .............................................28
+6.7.1.6. Latitude .............................................................................................................................28
+6.7.1.7. Longitude .......................................................................................................................... 28
+
+-4-
+GPSTrackerCommunicationProtocol
+6.7.1.8. Speed ................................................................................................................................ 29
+6.7.1.9. Course ...............................................................................................................................29
+6.7.1.10. Phone Number .................................................................................................................. 29
+6.7.1.11. Language ...........................................................................................................................29
+6.7.1.12. Information Serial Number ................................................................................................29
+6.7.1.13. Error Check ........................................................................................................................29
+6.7.1.14. Stop Bit ............................................................................................................................. 29
+6.7.2. Response of Server ............................................................................................................29
+6.7.2.1. Response package in Chinese ............................................................................................ 29
+6.7.2.2. Response package in English ..............................................................................................30
+VII. APPENDIX A: CODE FRAGMENT OF THE CRC-ITU LOOKUP TABLE ALGORITHM
+IMPLEMENTED BASED ON C LANGUAGE .....................................................................................32
+VIII. APPENDIX B: A FRAGMENT OF EXAMPLE OF DATA PACKET OF COMMUNICATION
+PROTOCOL ...................................................................................................................................33
+IX. APPENDIX C: COMPLETE FORMAT OF THE INFORMATION PACKAGE ..................................... 36
+
+-5-
+GPSTrackerCommunicationProtocol
+i. Communication Protocol
+Introduction
+This document defines instructions about interface protocol on application layer of
+vehiclesGPStrackerandlocation-basedserviceplatform.Relatedinterfaceprotocol
+onlyappliesintheinteractionbetweentheplatformandthepositionterminal.
+ii. Terms, Definitions
+Terms, Abbreviation Definition in English Definition in Chinese
+CMPP ChinaMobilePeertoPeer 中国移动点对点协议
+GPS GlobalPositioningSystem 全球卫星定位系统
+GSM GlobalSystemforMobileCommunication 全球移动通信系统
+GPRS GeneralPacketRadioService 通用无线分组业务
+TCP TransportControlProtocol 传输控制协议
+LBS LocationBasedServices 辅助定位服务
+IMEI InternationalMobileEquipmentIdentity 国际移动设备识别码
+MCC MobileCountryCode 移动用户所属国家代号
+MNC MobileNetworkCode 移动网号码
+LAC LocationAreaCode 位置区码
+CellID CellTowerID 移动基站
+UDP UserDatagramProtocol 用户数据报协议
+SOS SaveOurShip/SaveOurSouls 遇难求救信号
+CRC CyclicRedundancyCheck 循环冗余校验
+NITZ NetworkIdentityandTimeZone, 时区
+GIS GeographicInformationSystem 地理信息系统
+
+-6-
+GPSTrackerCommunicationProtocol
+iii. Basic Rules
+1. If a GPRS connection is established successfully, the terminal will send a first login message
+packet to the server and, within five seconds, if the terminal receives a data packet responded
+bythe server,theconnection is consideredto bea normal connection.The terminal will begin
+to send location information (i.e., GPS, LBS information package). A status information
+packagewillbesentbytheterminalafterthreeminutestoregularlyconfirmtheconnection.
+2. If the GPRS connection is established unsuccessfully, the terminal will not be able to send the
+login message packet. The terminal will start schedule reboot in twenty minutes if the GPRS
+connection is failed three times. Within twenty minutes, if the terminal successfully connects
+to the server and receives the data packet from the server as the server’s response to the login
+message packet sent by the terminal, the schedule reboot will be off and the terminal will not
+berebooted;otherwise,theterminalwillberebootedautomaticallyintwentyminutes.
+3. After receiving the login message packet, the server will return a response data packet. If the
+terminal doesn’t receive packet from the server within five seconds after sending the login
+message packet or the status information package, the current connection is regarded as an
+abnormal connection. The terminal will start a retransmission function for GPS tracking data,
+whichwillcausetheterminaltodisconnectthecurrentGPRSconnection,rebuildanewGPRS
+connectionandsendaloginmessagepacketagain.
+4. Iftheconnectionisregardedtobeabnormal,andthedatapacketasaresponsefromtheserveris
+failed to be received three times after a connection is established and a login message packet
+orstatusinformationpackageis sent,theterminal will startschedule rebootandthescheduled
+time istenminutes.Withintenminutes,if theterminal successfullyconnects totheserver and
+receives the data packet responded by the server, the schedule reboot will be off and the
+terminal will not be rebooted; otherwise, the terminal will be rebooted automatically in ten
+minutes.
+5. In case of the normal connection, the terminal will send a combined information package of
+GPS and LBS to the server after the GPS information is changed; and the server may set a
+defaultprotocolfortransmissionbyusingcommands.
+6. To ensure the effectiveness of the connection, the terminal will send status information to the
+server at regular intervals, and the server will return response data packets to confirm the
+connection.
+7. For the terminal which doesn’t register an IMEI number,the server will reply the terminal with
+a login request response and heartbeat packet response, rather than directly disconnect the
+connection. (If the connection is directly disconnected or the server doesn’t reply to the
+terminal, it will lead to a continuous reconnectedby the terminal and the GPRS traffic will be
+consumedheavily.
+
+-7-
+GPSTrackerCommunicationProtocol
+Data Flow Diagram
+
+
+-8-
+GPSTrackerCommunicationProtocol
+iv. Data Packet Format
+Thecommunicationistransferredasynchronouslyinbytes.
+Thetotallengthofpacketsis(10+N)Bytes.
+Format Length(Byte)
+StartBit 2
+PacketLength 1
+ProtocolNumber 1
+InformationContent N
+InformationSerial
+Number
+2
+ErrorCheck 2
+StopBit 2
+4.1. Start Bit
+FixedvalueinHEX0x780x78.
+4.2. Packet Length
+Length = Protocol Number + Information Content + Information Serial Number + Error Check,
+totally(5+N)Bytes,becausetheInformationContentisavariablelengthfield.
+4.3. Protocol Number
+Type Value
+LoginMessage 0x01
+LocationData 0x12
+Statusinformation 0x13
+Stringinformation 0x15
+Alarmdata 0x16
+GPS,queryaddressinformationby
+phonenumber
+0x1A
+Commandinformationsentbythe
+servertotheterminal
+0x80
+4.4. Information Contents
+The specific contents are determined by the protocol numbers corresponding to different
+applications.
+4.5. Information Serial Number
+The serial number of the first GPRS data (including status packet and data packet suchas GPS,
+LBS) sent after booting is ‘1’, and the serial number of data sent later at each time will be
+automaticallyadded‘1’.
+4.6. Error Check
+A check code may be used by the terminal or the server to distinguish whether the received
+information is error or not.Toprevent errors occur during data transmission, error check is added to
+againstdatamisoperation,soastoincreasethesecurityandefficiencyofthesystem.Thecheckcode
+isgeneratedbytheCRC-ITUcheckingmethod.
+The check codes of data in the structure of the protocol, from the Packet Length to the
+
+-9-
+GPSTrackerCommunicationProtocol
+Information Serial Number (including “Packet Length” and “Information Serial Number”) , are
+valuesofCRC-ITU.
+CRC error occur when the received information is calculated, the receiver will ignore and
+discardthedatapacket.
+4.7. Stop Bit
+FixedvalueinHEX0x0D0x0A.
+
+-10-
+GPSTrackerCommunicationProtocol
+v. Details about Data Packet sent by Server to Terminal
+The commonly used information packages sent by the terminal and those sent by the server will be
+interpretedseparately.
+5.1. Login Message Packet
+5.1.1. Terminal Sending Data Packet to Server
+The login message packet is used to be sent to the server with the terminal ID so as to confirm the
+establishedconnectionisnormalornot.
+Description Bits Example
+LoginMessage
+Packet(18
+Byte)
+StartBit 2 0x780x78
+Packet
+Length
+1 0x0D
+Protocol
+Number
+1 0x01
+TerminalID 8 0x010x230x450x670x890x010x230x45
+Information
+Serial
+Number
+2 0x000x01
+ErrorCheck 2 0x8C0xDD
+StopBit 2 0x0D0x0
+5.1.1.1. Start Bit
+FordetailsseeDataPacketFormatsection4.1.
+5.1.1.2. Packet Length
+FordetailsseeDataPacketFormatsection4.2.
+5.1.1.3. Protocol Number
+FordetailsseeDataPacketFormatsection4.3.
+5.1.1.4. Terminal ID
+TheterminalIDappliesIMEInumberof15bits.
+Example:iftheIMEIis123456789012345,
+theterminalIDis0x010x230x450x670x890x010x230x45.
+5.1.1.5. Information Serial Number
+FordetailsseeDataPacketFormatsection4.5.
+5.1.1.6. Error Check
+FordetailsseeDataPacketFormatsection4.6.
+5.1.1.7. Stop Bit
+FordetailsseeDataPacketFormatsection4.7.
+5.1.2. Server Responds the Data Packet
+Description Bits Example
+Login
+Message
+Packet(18
+StartBit 2 0x780x78
+PacketLength 1 0x05
+Protocol 1 0x01
+
+-11-
+GPSTrackerCommunicationProtocol
+Byte) Number
+Information
+Serial
+Number
+2 0x000x01
+ErrorCheck 2 0xD90xDC
+StopBit 2 0x0D0x0A
+The response packet from the server to the terminal: the protocol number in the response packet
+isidenticaltotheprotocolnumberinthedatapacketsentbytheterminal.
+5.1.2.1. Start Bit
+FordetailsseeDataPacketFormatsection4.1.
+5.1.2.2. Packet Length
+FordetailsseeDataPacketFormatsection4.2.
+5.1.2.3. Protocol Number
+FordetailsseeDataPacketFormatsection4.3.
+5.1.2.4. Information Serial Number
+FordetailsseeDataPacketFormatsection4.5.
+5.1.2.5. Error Check
+FordetailsseeDataPacketFormatsection4.6.
+5.1.2.6. Stop Bit
+FordetailsseeDataPacketFormatsection4.7.
+5.1.3. Examples
+Examplesoftheloginmessagepacketsentbytheterminaltotheserverandtheresponsepacket
+sent by the server to the terminal are as follows: (in the examples the terminal ID is
+123456789012345.
+Example of data packet sent by the terminal787800D01012345678901234500018CDD0D0A
+Explain
+0x780x78 0x0D 0x01
+0x010x230x450x670x890x010x230x45
+0x000x01
+0x8C
+0xDD
+0x0D0x0A
+StartBit Length
+Protocol
+No.
+TerminalID SerialNo.
+Error
+Check
+StopBit
+Example of response packet returned by the server
+787805010001D9DC0D0A
+Explain
+0x780x78 0x05 0x01 0x000x01 0xD90xDC 0x0D0x0A
+StartBit Length
+Protocol
+No.
+SerialNo. ErrorCheck StartBit
+
+-12-
+GPSTrackerCommunicationProtocol
+5.2. Location Data Packet (combined information package of GPS and LBS)
+5.2.1. Terminal Sending Location Data Packet to Server
+Format Length(Byte) Example
+Information
+Content
+StartBit 2 0x780x78
+PacketLength 1 0x1F
+ProtocolNumber 1 0x12
+GPS
+Information
+DateTime 6 0x0B0x080x1D0x110x2E0x10
+Quantityof
+GPS
+information
+satellites
+1 0xCF
+Latitude 4 0x020x7A0xC70xEB
+Longitude 4 0x0C0x460x580x49
+Speed 1 0x00
+Course,
+Status
+2 0x140x8F
+LBS
+Information
+MCC 2 0x010xCC
+MNC 1 0x00
+LAC 2 0x280x7D
+CellID 3 0x000x1F0xB8
+Mileagestatistics 4 0x000x000x000x00
+SerialNumber 2 0x000x03
+ErrorCheck 2 0x800x81
+StopBit 2 0x0D0x0A
+5.2.1.1. Start Bit
+FordetailsseeDataPacketFormatsection4.1.
+5.2.1.2. Packet Length
+FordetailsseeDataPacketFormatsection4.2.
+5.2.1.3. Protocol Number
+FordetailsseeDataPacketFormatsection4.3.
+5.2.1.4. Date Time
+Format Length(Byte) Example
+Year 1 0x0A
+Month 1 0x03
+Day 1 0x17
+Hour 1 0x0F
+Minute 1 0x32
+Second 1 0x17
+Example:2010-03-2315:30:23
+Calculatedasfollows: 10(Decimal)=0A(Hexadecimal)
+3(Decimal)=03(Hexadecimal)
+23(Decimal)=17(Hexadecimal)
+
+-13-
+GPSTrackerCommunicationProtocol
+15(Decimal)=0F(Hexadecimal)
+50(Decimal)=32(Hexadecimal)
+23(Decimal)=17(Hexadecimal)
+Thenthevalueis:0x0A0x030x170x0F0x320x17
+5.2.1.5. Length of GPS information, quantity of positioning satellites
+The field is 1 Byte displayed by two hex digits, wherein the first one is for the length of GPS
+informationandthesecondoneforthenumberofthesatellitesjoininpositioning.
+Example: if the value is 0xCB, it means the length of GPS information is 12 and the number of
+thepositioningsatellitesis11.
+(C=12BitLenght ，B=11satellites)
+5.2.1.6. Latitude
+Four bytes are consumed, defining the latitude value of location data.The range of the value is
+0-162000000,indicatingarangeof0°-90°.Theconversionmethodthereofisasfollow:
+converting the value of latitude and longitude output by GPS module into a decimal based on
+minute; multiplying the converted decimal by 30000; and converting the multiplied result into
+hexadecimal.
+Example: 22º32.7658’=(22X60+32.7658)X30000=40582974, then converted into a
+hexadecimalnumber
+40582974(Decimal)=26B3F3E(Hexadecimal)
+atlastthevalueis0x020x6B0x3F0x3E.
+5.2.1.7. Longitude
+Fourbytesareconsumed,definingthelongitudevalueoflocationdata.Therangeofthevalueis
+0-324000000,indicatingarangeof0°-180°.
+The conversion method herein is same to the method mentioned in Latitude (see
+section5.2.1.6).
+5.2.1.8. Speed
+Onebyteisconsumed,definingtherunningSpeedofGPS.Thevaluerangesfrom0x00to0xFF
+indicatingarangefrom0to225km/h.
+e.g. 0x00represents0km/h.
+0x10represents16km/h.
+0xFFrepresents255km/h.
+
+-14-
+GPSTrackerCommunicationProtocol
+5.2.1.9. Course Status
+Two bytes are consumed, defining the running direction of GPS. The value ranges from 0° to
+360°measuredclockwisefromnorthof0°.
+BYTE_1
+Bit7 0
+Bit6 0
+Bit5 GPSreal-time/differentialpositioning
+Bit4 GPShavingbeenpositioningornot
+Bit3 EastLongitude,WestLongitude
+Bit2 SouthLatitude,NorthLatitude
+Bit1
+Course
+Bit0
+BYTE_2
+Bit7
+Bit6
+Bit5
+Bit4
+Bit3
+Bit2
+Bit1
+Bit0
+Note:The statusinformationin thedatapacketis thestatus correspondingtothetime bitrecordedin
+thedatapacket.
+Forexample:thevalueis0x150x4C,thecorrespondingbinaryis0001010101001100,
+BYTE_1Bit7 0
+BYTE_1Bit6 0
+BYTE_1Bit5 0(realtimeGPS)
+BYTE_1Bit4 1(GPShasbeenpositioned)
+BYTE_1Bit3 0(EastLongitude)
+BYTE_1Bit2 1(NorthLatitude)
+BYTE_1Bit1 0
+BYTE_1Bit0 1
+BYTE_2Bit7 0
+BYTE_2Bit7 1
+BYTE_2Bit7 0 Course332°(0101001100inBinary,or332indecimal)
+BYTE_2Bit7 0
+BYTE_2Bit7 1
+BYTE_2Bit7 1
+BYTE_2Bit7 0
+BYTE_2Bit7 0
+which means GPS tracking is on, real time GPS, location at north latitude, east longitude and the
+courseis332°.
+
+-15-
+GPSTrackerCommunicationProtocol
+5.2.1.10. MCC
+Thecountrycodetowhichamobileuserbelongs,i.e.,MobileCountryCode(MCC).
+Example:ChineseMCCis460indecimal,or0x010xCCinHex(thatis,adecimalvalueof460
+converting into a hexadecimal value, and 0 is added at the left side because the converted
+hexadecimalvalueislessthanfourdigits).
+Hereintherangeis0x0000~0x03E7.
+5.2.1.11. MNC
+MobileNetworkCode(MNC)
+Example:ChineseMNCis0x00.
+5.2.1.12. LAC
+Location Area Code (LAC) included in LAI consists of two bytes and is encoded in
+hexadecimal.Theavailablerangeis0x0001-0xFFFE,andthecodegroup0x0000and0xFFFFcannot
+beused.(seeGSMspecification03.03,04.08and11.11).
+5.2.1.13. Cell ID
+CellTowerID(CellID),whichvaluerangesfrom0x000000to0xFFFFFF.
+5.2.1.14. Mileage Statistics
+Mileagestatistics,statisticsmileagecalculationvalue,16binarydispla.
+5.2.1.15. Information Serial Number
+FordetailsseeDataPacketFormatsection4.5.
+5.2.1.16. Error Check
+FordetailsseeDataPacketFormatsection4.6.
+5.2.1.17. Stop Bit
+FordetailsseeDataPacketFormatsection4.7.
+5.2.2. Examples of Packet Sent from Terminal to Server
+Example of sending by the terminal
+78781F120B081D112E10CC027AC7EB0C46584900148F01CC00287D001FB8000380810D0A
+Explain
+0x780x78 0x1F 0x12 0x0B0x080x1D0x110x2E0x10 0xCC 0x020x7A0xC70xEB
+StartBit
+Packet
+Length
+Protocol
+No.
+DateTime
+QuantityofGPS
+information
+satellites
+Latitude
+0x0C0x460x580x49 0x00 0x140x8F 0x010xCC 0x00 0x280x7D 0x000x1F0xB8 0x000x03
+Longitude Speed
+Course
+Status
+MCC MNC LAC CellID SerialNo.
+0x800x81 0x0D0x0A
+ErrorCheck StopBit
+
+-16-
+GPSTrackerCommunicationProtocol
+5.3. Alarm Packet (GPS, LBS, combined status information packet)
+5.3.1. Server Sending Alarm Data Packet to Server
+Format Length(Byte)
+Information
+Content
+StartBit 2
+PacketLength 1
+ProtocolNumber 1
+DateTime 6
+GPS
+Information
+QuantityofGPSinformationsatellites 1
+Latitude 4
+Longitude 4
+Speed 1
+Course,Status 2
+LBS
+Information
+LBSLength 1
+MCC 2
+MNC 1
+LAC 2
+CellID 3
+status
+Information
+TerminalInformationContent 1
+VoltageLevel 1
+GSMSignalStrength 1
+Alarm/Language 2
+SerialNumber 2
+ErrorCheck 2
+StopBit 2
+Alarm packet is consisted by adding status information to location packet, so does the encoding
+format of the protocol.
+5.3.1.1. Start Bit
+FordetailsseeDataPacketFormatsection4.1.
+5.3.1.2. Packet Length
+FordetailsseeDataPacketFormatsection4.2.
+5.3.1.3. Protocol Number
+FordetailsseeDataPacketFormatsection4.3.
+5.3.1.4. Date Time
+FordetailsseeLocationDataPacketFormatsection5.2.1.4.
+5.3.1.5. Length of GPS information, quantity of positioning satellites
+FordetailsseeLocationDataPacketFormatsection5.2.1.5.
+5.3.1.6. Latitude
+FordetailsseeLocationDataPacketFormatsection5.2.1.6.
+5.3.1.7. Longitude
+FordetailsseeLocationDataPacketFormatsection5.2.1.7.
+5.3.1.8. Speed
+FordetailsseeLocationDataPacketFormatsection5.2.1.8.
+
+-17-
+GPSTrackerCommunicationProtocol
+5.3.1.9. Status and Course
+FordetailsseeLocationDataPacketFormatsection5.2.1.9.
+5.3.1.10. MCC
+FordetailsseeLocationDataPacketFormatsection5.2.1.10.
+5.3.1.11. MNC
+FordetailsseeLocationDataPacketFormatsection5.2.1.11.
+5.3.1.12. LAC
+FordetailsseeLocationDataPacketFormatsection5.2.1.12.
+5.3.1.13. Cell ID
+FordetailsseeLocationDataPacketFormatsection5.2.1.13.
+5.3.1.14. Terminal Information
+Onebyteisconsumed,definingvariousstatusinformationofthemobilephone.
+Bit CodeMeaning
+BYTE
+Bit7
+1:oilandelectricitydisconnected
+0:gasoilandelectricityconnected
+Bit6
+1:GPStrackingison
+0:GPStrackingisoff
+Bit3~
+Bit5
+100:SOS
+011:LowBatteryAlarm
+010:PowerCutAlarm
+001:ShockAlarm
+000:Normal
+Bit2
+1:ChargeOn
+0:ChargeOff
+Bit1
+1:ACChigh
+0:ACCLow
+Bit0
+1:Activated
+0:Deactivated
+Example:0x44,correspondingbinaryvalueis01000100,
+indicates that the status of the terminal is: oil and electricity connected, GPS tracking is on,
+normalwithoutanyalarm,chargeon,ACCislow,anddeactivated.
+5.3.1.15. Voltage Level
+Thearrangeis0~6definingthevoltageisfromlowtohigh.
+0:NoPower(shutdown)
+1:ExtremelyLowBattery(notenoughforcallingorsendingtextmessages,etc.)
+2:VeryLowBattery(LowBatteryAlarm)
+3:LowBattery(canbeusednormally)
+4:Medium
+5:High
+6:VeryHigh
+Example:0x02indicatesverylowbatteryandaLowBatteryAlarmissending.
+5.3.1.16. GSM Signal Strength Levels
+
+-18-
+GPSTrackerCommunicationProtocol
+0x00:nosignal;
+0x01:extremelyweaksignal;
+0x02:veryweaksignal;
+0x03:goodsignal;
+0x04:strongsignal.
+Example:0x03indicatestheGSMsignalisgood.
+5.3.1.17. Alarm/Language
+0x00(formerbit)0x01(latterbit)
+formerbit:terminalalarmstatus(suitableforalarmpacketandelectronicfenceproject)
+latterbit:thecurrentlanguageusedintheterminal
+formerbit
+0x00:normal
+0x01:SOS
+0x02:PowerCutAlarm
+0x03:ShockAlarm
+0x04:FenceInAlarm
+0x05:FenceOutAlarm
+latterbit
+0x01:Chinese
+0x02:English
+Examples:
+NoAlarmandLanguageisChinese:0x000x01
+NoAlarmandLanguageisEnglish:0x000x02
+To increase the reliability of alarm information, labeling the alarm information
+repeatedly; in most cases, the alarm information keeps consistent with information
+of former terminal, while the inconsistencies are as follows:
+A．Low Battery Alarm occurred in the information of the terminal
+B．Fence in and out Alarm in the Alarm/Language information
+5.3.1.18. Information Serial Number
+FordetailsseeDataPacketFormatsection4.5.
+5.3.1.19. Error Check
+FordetailsseeDataPacketFormatsection4.6.
+5.3.1.20. Stop Bit
+FordetailsseeDataPacketFormatsection4.7.
+5.3.2. Examples
+Examples of terminal transmission
+787825160B0B0F0E241DCF027AC8870C4657E60014020901CC00287D001F7265060401010036
+56A40D0A
+Explain
+
+-19-
+GPSTrackerCommunicationProtocol
+0x780x78 0x25 0x16 0x0B0x0B0x0F0x0E0x24x01D 0xCF 0x020x7A0xC80x87
+StartBit Length
+Protocol
+No.
+DateTime
+QuantityofGPS
+information
+satellites
+Latitude
+0x0C0x460x570xE6 0x00 0x140x02 0x09 0x010xCC 0x00 0x280x7D 0x000x1F0x72
+Longitude Speed
+Course
+Status
+LBS
+Length
+MCC MNC LAC CellID
+0x65 0x06 0x04 0x010x01 0x000x36 0x560xA4 0x0D0x0A
+Terminal
+Information
+Content
+VoltageLevel
+GSMSignal
+Strength
+Alarm/Language SerialNo. ErrorCheck StopBit
+Note:The statusinformationin thedatapacketis thestatus correspondingtothetime bitrecordedin
+thedatapacket.
+
+-20-
+GPSTrackerCommunicationProtocol
+5.4. Heartbeat Packet (status information packet)
+Heartbeatpacketisadatapackettomaintaintheconnectionbetweentheterminalandtheserver.
+5.4.1. Terminal Sending Heartbeat Packet to Server
+Format Length(Byte)
+Information
+Content
+StartBit 2
+PacketLength 1
+ProtocolNumber 1
+Status
+Information
+TerminalInformation
+Content
+1
+VoltageLevel 1
+GSMSignalStrength 1
+Alarm/Language 2
+SerialNumber 2
+ErrorCheck 2
+StopBit 2
+5.4.1.1. Start Bit
+FordetailsseeDataPacketFormatsection4.1.
+5.4.1.2. Packet Length
+FordetailsseeDataPacketFormatsection4.2.
+5.4.1.3. Protocol Number
+FordetailsseeDataPacketFormatsection4.3.
+5.4.1.4. Terminal Information
+Onebyteisconsumeddefiningforvariousstatusinformationofthemobilephone.
+Bit CodeMeaning
+BYTE
+Bit7
+1:oilandelectricitydisconnected
+0:gasoilandelectricity
+Bit6
+1:GPStrackingison
+0:GPStrackingisoff
+Bit3~
+Bit5
+100:SOS
+011:LowBatteryAlarm
+010:PowerCutAlarm
+001:ShockAlarm
+000:Normal
+Bit2
+1:ChargeOn
+0:ChargeOff
+Bit1
+1:ACChigh
+0:ACCLow
+Bit0
+1:Activated
+0:Deactivated
+Example:0x44,correspondingbinaryvalueis01000100,
+indicates that the status of the terminal is: oil and electricity connected, GPS tracking is on,
+
+-21-
+GPSTrackerCommunicationProtocol
+normalwithoutanyalarm,chargeon,ACCislow,anddeactivated.
+5.4.1.5. Voltage Level
+Thearrangeis0~6definingthevoltageisfromlowtohigh.
+0:NoPower(shutdown)
+1:ExtremelyLowBattery(notenoughforcallingorsendingtextmessages,etc.)
+2:VeryLowBattery(LowBatteryAlarm)
+3:LowBattery(canbeusednormally)
+4:Medium
+5:High
+6:VeryHigh
+Example:0x02indicatesverylowbatteryandaLowBatteryAlarmissending.
+5.4.1.6. GSM Signal Strength Levels
+0x00:nosignal;
+0x01:extremelyweaksignal;
+0x02:veryweaksignal;
+0x03:goodsignal;
+0x04:strongsignal.
+Example:0x03indicatestheGSMsignalisgood.
+5.4.1.7. Alarm/Language
+0x00(formerbit)0x01(latterbit)
+formerbit:terminalalarmstatus(suitableforalarmpacketandelectronicfenceproject)
+latterbit:thecurrentlanguageoftheterminal
+formerbit
+0x00:normal
+0x01:SOS
+0x02:PowerCutAlarm
+0x03:ShockAlarm
+0x04:FenceInAlarm
+0x05:FenceOutAlarm
+latterbit
+0x01:Chinese
+0x02:English
+Examples:
+NoAlarmandLanguageisChinese:0x000x01
+NoAlarmandLanguageisEnglish:0x000x02
+5.4.1.8. Information Serial Number
+FordetailsseeDataPacketFormatsection4.5.
+5.4.1.9. Error Check
+FordetailsseeDataPacketFormatsection4.6.
+5.4.1.10. Stop Bit
+FordetailsseeDataPacketFormatsection4.7.
+5.4.2. Server Responds the Data Packet
+
+-22-
+GPSTrackerCommunicationProtocol
+Description Bits Example
+Login
+Message
+Packet(18
+Byte)
+StartBit 2 0x780x78
+PacketLength 1 0x05
+ProtocolNumber 1 0x01
+InformationSerialNumber 2 0x000x01
+ErrorCheck 2 0xD90xDC
+StopBit 2 0x0D0x0A
+Theresponsepacketfromtheserver totheterminal: theprotocolnumberintheresponsepacket
+isidenticaltotheprotocolnumberinthedatapacketsentbytheterminal.
+5.4.2.1. Start Bit
+FordetailsseeDataPacketFormatsection4.1.
+5.4.2.2. Packet Length
+FordetailsseeDataPacketFormatsection4.2.
+5.4.2.3. Protocol Number
+FordetailsseeDataPacketFormatsection4.3.
+5.4.2.4. Information Serial Number
+FordetailsseeDataPacketFormatsection4.5.
+5.4.2.5. Error Check
+FordetailsseeDataPacketFormatsection4.6.
+5.4.2.6. Stop Bit
+FordetailsseeDataPacketFormatsection4.7.
+5.4.3. Examples
+Exampleofdatapacketsentbytheterminal
+78780A134B040300010011061F0D0A
+Explain
+0x780x78 0x0A 0x13 0x4B0x040x03 0x000x01 0x000x11 0x060x1F 0x0D0x0A
+StartBit Length
+Protocol
+No.
+InformationContent
+Reservedbit
+(Language)
+SerialNo. ErrorCheck StopBit
+Exampleofresponsepacketreturnedbytheserver
+787805130011F9700D0A
+Explain
+0x780x78 0x05 0x13 0x000x11 0xF90x70 0x0D0x0A
+StartBit Length ProtocolNo. SerialNo. ErrorCheck StopBit
+
+-23-
+GPSTrackerCommunicationProtocol
+vi. Data Packet Sent From Server to Terminal
+6.1. Packet Sent by Server
+Format
+Length
+(Byte)
+StartBit 2
+Packetlength 1
+ProtocolNumber 1
+Information
+Content
+LengthofCommand 1
+ServerFlagBit 4
+CommandContent M
+Language 2
+InformationSerialNumber 2
+ErrorCheck 2
+StopBit 2
+6.1.1. Start Bit
+FordetailsseeDataPacketFormatsection4.1.
+6.1.2. Packet Length
+FordetailsseeDataPacketFormatsection4.2.
+6.1.3. Protocol Number
+TheProtocolNumberofterminaltransmissionis0x80.
+6.1.4. Length of Command
+ServerFlagBit+LengthofCommandContent
+Example:measuredinbytes,0x0Ameansthecontentofcommandoccupiedtenbytes.
+6.1.5. Server Flag Bit
+It is reserved to the identification of the server. The binary data received by the terminal is
+returnedwithoutchange.
+6.1.6. Command Content
+It is represented in ASC II of string, and the command content is compatible with Scout text
+messagecommand.Suchas#0613#CF#
+6.1.7. Language
+Abitindicatesthecurrentlanguageusedintheterminal.
+Chinese:0x000x01
+English:0x000x02
+6.1.8. Information Serial Number
+
+-24-
+GPSTrackerCommunicationProtocol
+FordetailsseeDataPacketFormatsection4.5.
+6.1.9. Error Check
+FordetailsseeDataPacketFormatsection4.6.
+6.1.10. Stop Bit
+FordetailsseeDataPacketFormatsection4.7.
+Example:
+Servertodevice:787815800F0001A9584459442C3030303030302300A0DCF10D0A
+Devicerespondserver:78781815 100001A9 584459 443D5375636365 7373210002001891
+770D0A
+theserversending:DYD,000000# alsocanuseScoutallcommands
+6.2. Packet Replied by Terminal
+Format
+Length
+(Byte)
+StartBit 2
+PacketLength 1
+ProtocolNumber 1
+Information
+Content
+LengthofCommand 1
+ServerFlagBit 4
+CommandContent M
+Language 2
+InformationSerialNumber 2
+ErrorCheck 2
+StopBit 2
+6.2.1. Start Bit
+FordetailsseeDataPacketFormatsection4.1.
+6.2.2. Packet Length
+FordetailsseeDataPacketFormatsection4.2.
+6.2.3. Protocol Number
+The terminal responds to the command sent by the server. The format of data packet is
+consistent with “the command sent by the server to the terminal”, but the Protocol Number
+hereinisdifferentandis0x15.
+6.2.4. Length of Command
+ServerFlagBit+LengthofCommandContent
+Example:measuredinbytes,0x0Ameansthecontentofcommandoccupiedtenbytes.
+6.2.5. Server Flag Bit
+It is reserved to the identification of the server. The binary data received by the terminal is
+returnedwithoutchange.
+6.2.6. Command Content
+It is represented in ASC II of string, and the command content is compatible with Scout text
+
+-25-
+GPSTrackerCommunicationProtocol
+messagecommand.
+6.2.7. Language
+Abitindicatesthecurrentlanguageusedintheterminal.
+Chinese:0x000x01
+English:0x000x02
+6.2.8. Information Serial Number
+FordetailsseeDataPacketFormatsection4.5.
+6.2.9. Error Check
+FordetailsseeDataPacketFormatsection4.6.
+6.2.10. Stop Bit
+FordetailsseeDataPacketFormatsection4.7.
+
+-26-
+GPSTrackerCommunicationProtocol
+6.3. Looking Up Location Information
+Function Description: Obtain the command of tracking information. A mobile phone user ora
+shortmessageservermayobtainthetrackinginformationbythiscommand.
+In an example, the transmitting and returning strings are converted into ASCII to generate
+commandcontents.
+Sending by the server
+DWXX,000000#
+Returned by the terminal
+ifsuccessful,return
+DWXX=Lat:<North/SouthLatitude>,Lon:<East/WestLongitude>,Course:<angle>,Speed:<speed>,DateTime:<time>
+iffailed,return
+DWXX=CommandError!
+iftrackingunsuccessful,return
+DWXX=Lat:,Lon:,Course:,Speed:,DateTime:-:
+Example:
+DWXX=Lat:N23d5.1708m,Lon:E114d23.6212m,Course:120,Speed:53.02;DateTime:08-09-1214:52:36
+Explain:whichmeans:N23d5.1708m,E114d23.6212m,Course:120,Speed:53.02km/h,DateTime:08-09-1214:52:36.
+6.4. Cutting Oil and Electricity
+Function Description:cuttingoffthevehicleoil-electriccontrolcircuit
+In an example, the transmitting and returning strings are converted into ASCII to generate
+commandcontents.
+Sending by the server
+DYD,000000#
+Returned by the terminal
+ifsuccessful,return
+DYD=Success!
+iffailed,return
+DYD=UnvaluedFix 或 DYD=SpeedLimit,Speed40km/h
+Explain:theoilandelectricityarenotallowedtobedisconnectwhentheGPStrackingisoffortherunningspeedishigherthan
+20KM/H.
+6.5. Connecting Oil and Electricity
+Function Description:connectingthevehicleoil-electriccontrolcircuit
+In an example, the transmitting and returning strings are converted into ASCII to generate
+commandcontents.
+Sending by the server
+HFYD,000000#
+Returned by the terminal
+ifsuccessful,return
+HFYD=Success!
+iffailed,return
+HFYD=Fail!
+6.6. Address Querying Information Sent by the Server
+In an example, the transmitting and returning strings are converted into ASCII to generate
+
+-27-
+GPSTrackerCommunicationProtocol
+commandcontents.
+Inanexample,thetransmittingandreturningstringsareconvertedintoASCIItogeneratecommand
+contents.
+ADDRESS,AddressContent,PhoneNumber
+Note:TheaddresscontentinChineseissentinUNICODE.
+
+-28-
+GPSTrackerCommunicationProtocol
+6.7. GPS, Phone Number Querying Address Information Package (0X1A)
+6.7.1. Information from Terminal to Server
+Theinformationisreceivedbytheterminal.
+The format is basically same to the format mentioned as GPS information content, and the
+differentisthatphonenumberforqueryingaddressisaddedhere.
+Format
+Length
+(Byte)
+StartBit 2
+PacketLength 1
+ProtocolNumber 1
+Information
+Content
+DateTime 6
+GPS
+Information
+LengthofGPSinformation,
+quantityofpositioningsatellites
+1
+Latitude 4
+Longitude 4
+Speed 1
+Course,Status 2
+PhoneNumber 21
+Language 2
+InformationSerialNumber 2
+ErrorCheck 2
+StopBit 2
+6.7.1.1. Start Bit
+FordetailsseeDataPacketFormatsection4.1.
+6.7.1.2. Packet Length
+FordetailsseeDataPacketFormatsection4.2.
+Example:measuredinbytes,0x2Emeansthecontentofcommandoccupied46bytes.
+6.7.1.3. Protocol Number
+0x1Aisutilized.
+6.7.1.4. Date Time
+FordetailsseeLocationDataPacketFormatsection5.2.1.4.
+6.7.1.5. Length of GPS information, quantity of positioning satellites
+FordetailsseeLocationDataPacketFormatsection5.2.1.5.
+6.7.1.6. Latitude
+FordetailsseeLocationDataPacketFormatsection5.2.1.6.
+6.7.1.7. Longitude
+FordetailsseeLocationDataPacketFormatsection5.2.1.7.
+
+-29-
+GPSTrackerCommunicationProtocol
+6.7.1.8. Speed
+FordetailsseeLocationDataPacketFormatsection5.2.1.8.
+6.7.1.9. Course
+FordetailsseeLocationDataPacketFormatsection5.2.1.9.
+6.7.1.10. Phone Number
+The SOS phone number used for requesting address query, which is converted byASCII and 0
+isaddedattherightsideiflessthan21bits.
+6.7.1.11. Language
+Abitindicatesthecurrentlanguageusedintheterminal.
+Chinese:0x000x01
+English:0x000x02
+6.7.1.12. Information Serial Number
+FordetailsseeDataPacketFormatsection4.5.
+6.7.1.13. Error Check
+FordetailsseeDataPacketFormatsection4.6.
+6.7.1.14. Stop Bit
+FordetailsseeDataPacketFormatsection4.7.
+6.7.2. Response of Server
+Theserver replies Chinese address orEnglish addressbasedon theextended command,and the
+responsedatapacketisinconsistent
+6.7.2.1. Response package in Chinese
+TheresponsedatapacketinChineseisasfollow:
+Command
+packetsent
+fromthe
+servertothe
+terminal
+(15+M+N
+Byte)
+StartBit 2
+Lengthofdatabit 1
+ProtocolNumber 1
+Information
+Content
+LengthofCommand 1
+ServerFlagBit 4
+Command
+Content
+ADDRESS 7
+&& 2
+Address
+Content
+M
+&& 2
+Phone
+Number
+21
+## 2
+InformationSerialNumber 2
+CheckBit 2
+StopBit 2
+TheProtocolNumberofrequestChineseaddressresponseis0X17.
+Command Content: ADDRESS&&Address Content&&Phone Number## (ADDRESS, &&, ##
+
+-30-
+GPSTrackerCommunicationProtocol
+arefixedstrings)
+ChineseaddresscontentissentinUNICODE.
+Example of Chinese address response information:
+7878 //StartBit
+84 //DataLength
+17 //ResponseProtocolNumber
+7E //Lengthof Command,i.e.,length of theinformation ofthetransmitted
+content
+00000001 //ServerFlagBit
+41444452455353 //ADDRESS
+2626 //&& Separator
+624059044F4D7F6E0028 //ChineseaddressissentinUNICODE
+004C004200530029003A
+5E7F4E1C77015E7F5DDE
+5E0282B190FD533AFF17
+FF15FF144E6190530028
+004E00320033002E0033
+00390035002C00450031
+00310032002E00390038
+0038002996448FD1
+2626 //&&Separator
+313337313038313931333500000000000000000000 //PhoneNumber
+2323 //## terminatorofcontent
+0106 //SerialNo.
+3825 //CheckBit
+0D0A //StopBit
+6.7.2.2. Response package in English
+Considering the address or other foreign address in English is generally longer than that in
+Chinese,onedatabitisnotenough,sothedatabitisoccupiedin2bytes.Note:
+only the length of data bit corresponding to the protocol number of response address information is
+changedintotwobytes.
+Command
+packetsent
+fromthe
+servertothe
+terminal
+(15+M+N
+Byte)
+StartBit 2
+Lengthofdatabit 2
+ProtocolNumber 1
+Information
+Content
+LengthofCommand 2
+ServerFlagBit 4
+Command
+Content
+ADDRESS 7
+&& 2
+Address M
+
+-31-
+GPSTrackerCommunicationProtocol
+Content
+&& 2
+Phone
+Number
+21
+## 2
+InformationSerialNumber 2
+CheckBit 2
+StopBit 2
+TheProtocolNumberofrequestChineseaddressresponseis0X97.
+Command Content: ADDRESS&&Address Content&&Phone Number##(ADDRESS, &&, ##
+arefixedstrings)
+Example of English address response information:
+7878 //StartBit
+00D1 //DataLength
+97 //ResponseProtocolNumber
+00CA //LengthofCommand,i.e.,lengthoftheinformationofthetransmittedcontent
+00000001 //ServerFlagBit
+41444452455353 //ADDRESS
+2626 //&& Separator
+0053004F00530028004C //EnglishaddressissentinUNICODE
+0029003A005300680069
+006D0069006E00200046
+0061006900720079006C
+0061006E006400200057
+00650073007400200052
+0064002C004800750069
+006300680065006E0067
+002C004800750069007A
+0068006F0075002C0047
+00750061006E00670064
+006F006E00670028004E
+00320033002E00310031
+0031002C004500310031
+0034002E003400310031
+0029004E006500610072
+00620079
+2626 //&&Separator
+313235323031333739303737343035310000000000 //PhoneNumber
+2323 //## terminatorofcontent
+0007 //SerialNo.
+72b5 //CheckBit
+0D0A //StopBit
+
+-32-
+GPSTrackerCommunicationProtocol
+vii. Appendix A: code fragment of the CRC-ITU lookup table algorithm
+implemented based on C language
+Code fragment of the CRC-ITU lookup table algorithm implemented based on C language is as
+follow:
+staticconstU16crctab16[]=
+{
+0X0000,0X1189,0X2312,0X329B,0X4624,0X57AD,0X6536,0X74BF,
+0X8C48,0X9DC1,0XAF5A,0XBED3,0XCA6C,0XDBE5,0XE97E,0XF8F7,
+0X1081,0X0108,0X3393,0X221A,0X56A5,0X472C,0X75B7,0X643E,
+0X9CC9,0X8D40,0XBFDB,0XAE52,0XDAED,0XCB64,0XF9FF,0XE876,
+0X2102,0X308B,0X0210,0X1399,0X6726,0X76AF,0X4434,0X55BD,
+0XAD4A,0XBCC3,0X8E58,0X9FD1,0XEB6E,0XFAE7,0XC87C,0XD9F5,
+0X3183,0X200A,0X1291,0X0318,0X77A7,0X662E,0X54B5,0X453C,
+0XBDCB,0XAC42,0X9ED9,0X8F50,0XFBEF,0XEA66,0XD8FD,0XC974,
+0X4204,0X538D,0X6116,0X709F,0X0420,0X15A9,0X2732,0X36BB,
+0XCE4C,0XDFC5,0XED5E,0XFCD7,0X8868,0X99E1,0XAB7A,0XBAF3,
+0X5285,0X430C,0X7197,0X601E,0X14A1,0X0528,0X37B3,0X263A,
+0XDECD,0XCF44,0XFDDF,0XEC56,0X98E9,0X8960,0XBBFB,0XAA72,
+0X6306,0X728F,0X4014,0X519D,0X2522,0X34AB,0X0630,0X17B9,
+0XEF4E,0XFEC7,0XCC5C,0XDDD5,0XA96A,0XB8E3,0X8A78,0X9BF1,
+0X7387,0X620E,0X5095,0X411C,0X35A3,0X242A,0X16B1,0X0738,
+0XFFCF,0XEE46,0XDCDD,0XCD54,0XB9EB,0XA862,0X9AF9,0X8B70,
+0X8408,0X9581,0XA71A,0XB693,0XC22C,0XD3A5,0XE13E,0XF0B7,
+0X0840,0X19C9,0X2B52,0X3ADB,0X4E64,0X5FED,0X6D76,0X7CFF,
+0X9489,0X8500,0XB79B,0XA612,0XD2AD,0XC324,0XF1BF,0XE036,
+0X18C1,0X0948,0X3BD3,0X2A5A,0X5EE5,0X4F6C,0X7DF7,0X6C7E,
+0XA50A,0XB483,0X8618,0X9791,0XE32E,0XF2A7,0XC03C,0XD1B5,
+0X2942,0X38CB,0X0A50,0X1BD9,0X6F66,0X7EEF,0X4C74,0X5DFD,
+0XB58B,0XA402,0X9699,0X8710,0XF3AF,0XE226,0XD0BD,0XC134,
+0X39C3,0X284A,0X1AD1,0X0B58,0X7FE7,0X6E6E,0X5CF5,0X4D7C,
+0XC60C,0XD785,0XE51E,0XF497,0X8028,0X91A1,0XA33A,0XB2B3,
+0X4A44,0X5BCD,0X6956,0X78DF,0X0C60,0X1DE9,0X2F72,0X3EFB,
+0XD68D,0XC704,0XF59F,0XE416,0X90A9,0X8120,0XB3BB,0XA232,
+0X5AC5,0X4B4C,0X79D7,0X685E,0X1CE1,0X0D68,0X3FF3,0X2E7A,
+0XE70E,0XF687,0XC41C,0XD595,0XA12A,0XB0A3,0X8238,0X93B1,
+0X6B46,0X7ACF,0X4854,0X59DD,0X2D62,0X3CEB,0X0E70,0X1FF9,
+0XF78F,0XE606,0XD49D,0XC514,0XB1AB,0XA022,0X92B9,0X8330,
+0X7BC7,0X6A4E,0X58D5,0X495C,0X3DE3,0X2C6A,0X1EF1,0X0F78,
+};
+// calculatethe16-bitCRCofdatawithpredeterminedlength.
+U16GetCrc16(constU8*pData,intnLength)
+{
+U16 fcs = 0xffff; // initialization
+while(nLength>0){
+fcs=(fcs>>8)^crctab16[(fcs^*pData)&0xff];
+nLength--;
+pData++;
+}
+return ~fcs; // negated
+}
+
+-33-
+GPSTrackerCommunicationProtocol
+viii. Appendix B: a fragment of example of data packet of communication
+protocol
+The following data displayed in hexadecimal are intercepted from the communication between a
+terminal and a server, wherein transmission means sending by the terminal and reception means
+returnedfromtheserver:
+Loginpacket:
+transmission:78780D01035341353215036200022D060D0A
+reception:787805010002EB470D0A
+GPSdatapacket(06meansadoptingcombinedinformationpackageofGPSandLBS):
+transmission: 78 78 1F 12 0B 08 1D 112E 10CF 027AC7 EB 0C 46 5849 00 148F 01 CC 00 28
+7D001FB8000380810D0A
+Status packet:
+transmission:78780A134401040001000508450D0A
+reception:787805130005AFD50D0A
+disconnect oil and electricity online:
+reception:787815800F0001A9584459442C3030303030302300A0DCF10D0A
+transmission:78781815100001A9584459443D53756363657373210002001891770D0A
+theserversendingDYD,000000#
+reply:DYD=Success!
+Commandsentduringdisconnectionofoilandelectricity:
+reception:787815800F0001A9614459442C3030303030302300A03E100D0A
+transmission:787853154B0001A961416C726561647920696E20746865207374617465
+206F66206675656C20737570706C7920637574206F66662C74686520636F6D6D61
+6E64206973206E6F742072756E6E696E67210002001CF30D0D0A
+theserversendingDYD,000000#
+reply:Alreadyinthestateoffuelsupplycutoff,thecommandisnotrunning!
+Connect oil and electricity online:
+reception:78781680100001A963484659442C3030303030302300A07BDC0D0A
+transmission:78781915110001A963484659443D53756363657373210002001EF8930D
+0A
+theserversending:HFYD,000000#
+reply:HFYD=Success!
+Commandsentduringconnectionofoilandelectricity:
+reception:78781680100001A964484659442C3030303030302300A08B1B0D0A
+transmission:787855154D0001A9 64416C726561647920696E20746865207374617465
+206F66206675656C20737570706C7920746F20726573756D652C74686520636F6D
+6D616E64206973206E6F742072756E6E696E67210002001FDBBF0D0A
+theserversending:HFYD,000000#
+reply:Alreadyinthestateoffuelsupplytoresume,thecommandisnotrunning!
+Querying address information online:
+reception:78781680100001A967445758582C3030303030302300A0062D0D0A
+transmission: 78 78 64 15 5C 00 01 A9 67 44 57 58 58 3D 4C 61 74 3A 4E 32 33 2E 31 31 31 36 38 32
+2C4C6F6E3A453131342E3430393231372C436F757273653A302E30302C53706565
+643A302E333531382C4461746554696D653A31312D31312D3135202031313A3533
+
+-34-
+GPSTrackerCommunicationProtocol
+3A34330002002307AE0D0A
+content sent by the terminal:
+DWXX=Lat:N23.111682,Lon:E114.409217,Course:0.00,Speed:0.3518,DateTime:11-11-1511:53:43
+the terminal obtains address information from the server:
+Chinese:
+transmission:78782E1A0B0B0F0E2117CF027AC8870C4657E3001402363633363600
+03000400000000000000000000000000010034ADE90D0A
+reception:787894178E000000014144445245535326264F4D7F6E003A5E7F4E1C7701
+60 E0 5D DE 5E 02 4E 91 5C 71 89 7F 8D EF 00 2E 65 87 53 4E 4E 00 8D EF 00 2E 79 BB 60 E0 5D
+DE 5B 89 4F 17 4F 1A 8B A1 5E 08 4E 8B 52 A1 62 40 7E A6 00 33 00 32 7C 73 00 2E 79 BB 60 E0
+5DDE 5E025916554662958D44670D52A1 4E2D5FC37EA6003300327C73002E2626
+36363336360003000400000000000000000000000023230001E42A0D0A
+The content sent by the server is: Locating: Wenhua Rd. 1, Huizhou, Guangdong, about 32 meters
+fromHuizhouAnzhongAccountingFirm,about32metersfromHuizhouForeignInvestmentService
+Center.
+MobilePhoneNumberis66366.
+English:
+transmission:78782E1A0B0B0F0E1E08CF027AC8A20C4657D7001402363633363600
+03000400000000000000000000000000020032043A0D0A
+reception:78 78 00 E9 97 00 E2 00 00 00 01 41 44 44 52 45 53 53 2626 00 50 00 72 00 65 00 63 00 69
+0073 00 65 00 6C 0079 00 20 00 4C 006F 00 63 0061 00 74 00 69 00 6E 00 6700 3A00 31 00 30 53
+F7002000590075006E007300680061006E0020005700650073007400200052006400
+2C00 48 00 75 00 6900 63 00 68 00 65 006E 0067 00 2C 0048 0075 00 69 00 7A00 68 00 6F00 75
+00 2C 00 47 00 75 00 61 00 6E 00 67 00 64 00 6F 00 6E 00 67 00 2C 00 35 00 31 00 36 00 30 00 30 00
+330028004E00320033002E00310031003100370037002C0045003100310034002E00
+34003000390032003200292626363633363600030004000000000000000000000000
+23230001AF4D0D0A
+The content sent by the server is: Precisely Locating:10 号 Yunshan West
+Rd,Huicheng,Huizhou,Guangdong,516003(N23.11177,E114.40922)
+MobilePhoneNumberis66366.
+Process of Alarm packet:
+Short message in Chinese:
+transmission:787825160B0B0F0E241DCF027AC8870C4657E60014020901CC00287D
+001F726506040101003656A40D0A
+reception:78780516003695700D0A
+reception:7878BE17B800000001414C41524D534D5326267D276025547C53EB003A
+5E7F4E1C770160E05DDE5E024E915C71897F8DEF002E6587534E4E008DEF002E
+79BB4E2D884C00410054004D7EA6003300317C73002E79BB4E2D884C6C5F5317
+652F884C7EA6003300317C73002E002C00310031002D00310031002D0031003500
+2000310034003A00330036003A003200392626303030303030303030303030303030
+30303030303030303030303030303030303030303030303030303023230001B6D8
+0D0A
+ContentofShortmessageis: EmergencyCall:WenhuaRd.1,Huizhou,Guangdong,about31meters
+
+-35-
+GPSTrackerCommunicationProtocol
+away fromATM machine of Bank of China, about 31 meters away from Jiangbei branch of of Bank
+ofChina,11-11-1514:36:29.
+Thespecificmeaningsoftheabovecommandscanbelookedupintheprotocoldocument.
+
+-36-
+GPSTrackerCommunicationProtocol
+ix. Appendix C: Complete Format of the Information Package
+A.datapacketsentbytheterminaltotheserver
+LoginMessagePacket(18Byte)
+StartBit Packetlength ProtocolNumber TerminalID InformationSerialNumber CheckBit StopBit
+2 1 1 8 2 2 2
+GPSInformationPackage(26+NByte)
+S
+t
+a
+r
+t
+B
+i
+t
+Pack
+et
+lengt
+h
+P
+r
+o
+t
+o
+c
+o
+l
+N
+u
+m
+b
+e
+r
+InformationContent
+Inform
+ation
+serial
+number
+chec
+kbit
+stop
+bitDateTime
+GPSInformation
+Reserv
+ed
+extende
+dbit
+LengthofGPS
+information,quantity
+ofpositioning
+satellites
+Lat
+itu
+de
+Lo
+ngi
+tud
+e
+Spe
+ed
+Course,
+Status
+2 1 1 6 1 4 4 1 2 N 2 2 2
+LBSinformationpackage(23+NByte)
+S
+t
+a
+r
+t
+B
+i
+t
+Pa
+ck
+et
+le
+ng
+th
+Pr
+ot
+oc
+ol
+N
+u
+m
+be
+r
+InformationContent In
+fo
+r
+m
+at
+io
+n
+se
+ri
+al
+n
+u
+m
+b
+er
+ch
+ec
+k
+bit
+st
+op
+bi
+t
+Dat
+e
+Tim
+e
+LBSInformation
+R
+es
+er
+ve
+d
+ex
+te
+nd
+ed
+bit
+MCC MNC LAC CellID
+2 1 1 6 2 1 2 3 N 2 2 2
+LBScompleteinformationpackage(42+NByte)
+Sta
+rt
+Bit
+Pac
+ket
+len
+gth
+Pro
+toc
+ol
+Nu
+mb
+er
+InformationContent Inf
+or
+mat
+ion
+seri
+al
+nu
+mb
+er
+che
+ck
+bit
+sto
+p
+bit
+Dat
+e
+Ti
+me
+LBSInformation Res
+erv
+ed
+ext
+end
+ed
+bit
+M
+C
+C
+M
+N
+C
+L
+A
+C
+M
+C
+I
+M
+C
+I
+S
+S
+N
+C
+I
+1
+N
+C
+I
+S
+S
+1
+N
+C
+I
+2
+N
+C
+I
+S
+S
+2
+N
+C
+I
+3
+N
+C
+I
+S
+S
+3
+N
+C
+I
+4
+N
+C
+I
+S
+S
+4
+N
+C
+I
+5
+N
+C
+I
+S
+S
+5
+N
+C
+I
+6
+N
+C
+I
+S
+S
+6
+2 1 1 6 2 1 2 2 1 2 1 2 1 2 1 2 1 2 1 2 1 N 2 2 2
+GPS、LBSinformationpackage(34+M+NByte)
+St
+art
+Bi
+t
+Pac
+ket
+len
+gth
+Prot
+ocol
+Num
+ber
+InformationContent
+Inform
+ation
+serial
+numbe
+r
+che
+ck
+bit
+st
+op
+bi
+t
+Da
+te
+Ti
+me
+GPSInformation LBSInformation
+Rese
+rved
+and
+exten
+ded
+Length
+ofGPS
+inform
+ation,
+quantit
+yof
+positio
+ning
+satellit
+es
+Latit
+ude
+Longi
+tude
+Sp
+eed
+Cou
+rse,
+Stat
+us
+Rese
+rved
+exten
+ded
+bit
+M
+CC
+M
+N
+C
+L
+A
+C
+C
+ell
+I
+D
+2 1 1 6 1 4 4 1 2 M 2 1 2 3 M 2 2 2
+StatusPacket(13+NByte)
+S
+t
+a
+r
+Packet
+Length
+Proto
+col
+Num
+ber
+InformationContent Informatio
+nSerial
+Number
+Check
+Bit
+Stop
+BitTerminalInformation
+Content
+Voltage
+Level
+GSMSignal
+StrengthLevel
+Reserved
+and
+Extended
+
+-37-
+GPSTrackerCommunicationProtocol
+t
+B
+i
+t
+Bit
+(language)
+2 1 1 1 1 1 2 2 2 2
+SNRinformationofsatellite(11+M+NByte)
+StartBit Packet
+Length
+Protocol
+Number
+InformationContent
+InformationSerial
+Number
+Check
+Bit
+Stop
+BitQuantityofpositioning
+satellites
+SNRof
+Satellite Reservedand
+ExtendedBit1 2 3 …… n
+2 1 1 1 M N 2 2 2
+terminalrespondstothecommandsentbyserver(15+M+NByte)
+Start
+Bit
+Packet
+Length
+Protocol
+Number
+StringContent
+Information
+SerialNumber
+Chec
+kBit
+Stop
+BitLengthof
+Command
+Server
+FlagBit
+Command
+Content
+Reservedand
+ExtendedBit
+(language)
+2 1 1 1 4 M 2 2 2 2
+GPS,LBS,StatusInformationPackage(40+M+N+LByte)
+Start
+Bit
+Pac
+ket
+Len
+gth
+Prot
+ocol
+Nu
+mbe
+r
+InformationContent Res
+erve
+d
+and
+Exte
+nde
+d
+Bit
+(lan
+gua
+ge)
+Info
+rmat
+ion
+Seri
+al
+Nu
+mbe
+r
+Che
+ck
+Bit
+Stop
+Bit
+Dat
+e
+Tim
+e
+GPSInformation LBSInformation Status
+Information
+Lengthof
+GPS
+informatio
+n,quantity
+of
+positionin
+gsatellites
+Lat
+itu
+de
+Lo
+ngi
+tud
+e
+Spe
+ed
+Cou
+rse,
+Stat
+us
+Reser
+ved
+and
+Exten
+ded
+Bit
+LB
+S
+Len
+gth
+MCC MNC LAC Cell
+ID
+Res
+erve
+d
+and
+Exte
+nde
+d
+Bit
+Ter
+min
+al
+Info
+rmat
+ion
+Con
+tent
+Volt
+age
+Lev
+el
+GSM
+Signa
+l
+Stren
+gth
+Level
+2 1 1 6 1 4 4 1 2 M 1 2 1 2 3 N 1 1 1 2 2 2 2
+B．DataPacketSentbyServertoTerminal
+ResponseofServerafterreceivingStatusPacketfrom Terminal(10Bytes)
+StartBit PacketLength ProtocolNumber InformationSerialNumber CheckBit StopBit
+2 1 1 2 2 2
+CommandPacketSentbyServertoTerminal(15+M+NByte)
+Start
+Bit
+Packet
+Length
+Protocol
+Number
+InformationContent Information
+SerialNumber
+Check
+Bit
+Stop
+BitLengthof
+Command
+Server
+FlagBit
+Command
+Content
+Reserved
+extendedbit
+2 1 1 1 4 M N 2 2 2
+
+-38-
+GPSTrackerCommunicationProtocol
+Command list
+Command Explain Reply content
+IMEI# IMEI query IMEI:135790246811200
+IMEI,135790246811200# Set IMEI OK
+FACTORY# Restorefactorysettings OK, The terminal will restart after 30
+seconds!
+RESET# restart Theterminalwillrestartafter1minute!
+WHERE# Locationquery Current
+position!Lat:N22.589031,Lon:E113.853
+567,Course:0,Speed:0,DateTime:2018-0
+7-26 10:25:55
+SERVER# Serverquery server,1,gw.carhere.net,8005,0#
+server,1,gw.carhere.net,8005,0# Setdomainname ok
+Server,0,120.24.248.12,8005,0# SetIP ok
+GMT# Timezonequery CurrentlyTimezone(GMT):E,8,0
+APN# APNquery Currentlyinuse
+APN:peoples.net,0000,0000;

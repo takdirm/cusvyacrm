@@ -1,0 +1,50 @@
+@baseUrl = http://localhost:8090
+@firebaseIdToken = REPLACE_WITH_FIREBASE_ID_TOKEN
+
+### Health check
+GET {{baseUrl}}/api/health
+
+### Validate Firebase token
+POST {{baseUrl}}/api/auth/validate
+Content-Type: application/json
+
+{
+  "idToken": "{{firebaseIdToken}}"
+}
+
+### Web login (upsert user)
+POST {{baseUrl}}/api/auth/web-login
+Content-Type: application/json
+
+{
+  "idToken": "{{firebaseIdToken}}"
+}
+
+### Mobile register/login (upsert customer)
+POST {{baseUrl}}/api/auth/mobile-register
+Content-Type: application/json
+
+{
+  "idToken": "{{firebaseIdToken}}",
+  "name": "Mobile Customer"
+}
+
+### List users
+GET {{baseUrl}}/api/users
+Authorization: Bearer {{firebaseIdToken}}
+
+### List customers
+GET {{baseUrl}}/api/customers
+Authorization: Bearer {{firebaseIdToken}}
+
+### Upsert application setting
+POST {{baseUrl}}/api/settings
+Authorization: Bearer {{firebaseIdToken}}
+Content-Type: application/json
+
+{
+  "key": "App.Name",
+  "value": "Cusvya Template",
+  "description": "Display name"
+}
+

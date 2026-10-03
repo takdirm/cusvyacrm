@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+	
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ApplicationIcon>applogo-main.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="applogo-main.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="10.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CoreServices\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Scootr.Services\Scootr.Services.csproj" />
+    <ProjectReference Include="..\..\Libraries\Scootr.Data\Scootr.Data.csproj" />
+  </ItemGroup>
+
+</Project>

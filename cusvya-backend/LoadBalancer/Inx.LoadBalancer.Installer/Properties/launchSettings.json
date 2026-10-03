@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Ace.Net.Deploy.MsiInstaller": {
+      "commandName": "Project",
+      "commandLineArgs": "MSINAME=loadbalancer ACTION=install  webport=443 certsubname=desktop-qmuperm"
+    }
+  }
+}

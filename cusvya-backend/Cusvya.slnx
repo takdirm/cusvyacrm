@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/conf/">
+    <File Path="./conf/appsettings.json" />
+  </Folder>
+  <Folder Name="/Libraries/">
+    <Project Path="./Libraries/Cusvya.Core/Cusvya.Core.csproj" />
+    <Project Path="./Libraries/Cusvya.Data/Cusvya.Data.csproj" />
+    <Project Path="./Libraries/Cusvya.Services/Cusvya.Services.csproj" />
+  </Folder>
+  <Folder Name="/Presentation/">
+    <Project Path="./Presentation/CusvyaApi/CusvyaApi.csproj" />
+  </Folder>
+</Solution>
